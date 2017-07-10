@@ -1,13 +1,19 @@
 "use strict"
 
+// As an experiment I structure it like the Elm architecture - a single non-global State object, grouped update functions and separate mutable activity (ajax).
+
+// This uses Knockout.js for basic view binding. Jasmine for unit tests (open SpecRunner.html).
+
+// Things thought of, but decided would be overkill - validate json schema, more thorough unit tests. 
+
 var Main = (function () {
 
-  var MessageTime = 1000 // 3 seconds
-
+  // Constants
+  var MessageTime = 3000 // 3 seconds
   var QuizUrl = "https://proto.io/en/jobs/candidate-questions/quiz.json"
   var ResultsMessagesUrl = "http://proto.io/en/jobs/candidate-questions/result.json"
 
-  // State
+  // State model
   var State = {
     message: ko.observable(),
     quiz: ko.observable(),
@@ -44,18 +50,7 @@ var Main = (function () {
     message: "",
     img: ""
   })
-  
-
-  function validateLoadQuiz(quiz) {
-    // TODO
-    return true
-  }
-
-  function validateLoadResultMessages(resultMessages) {
-    // TODO
-    return true
-  }
-
+ 
   function setUpQuiz(quiz) {
     quiz.questions.forEach(function (question) {
       question.selected_answer = []
@@ -65,13 +60,11 @@ var Main = (function () {
   Retrieval.getQuizData(
     ResultsMessagesUrl,
     State.message,
-    validateLoadResultMessages,
     State.resultsMessages
   ).done(
     Retrieval.getQuizData(
       QuizUrl,
       State.message,
-      validateLoadQuiz,
       State.quiz,
       setUpQuiz
     ).done(

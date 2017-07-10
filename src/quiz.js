@@ -2,10 +2,6 @@
 
 var Quiz = (function () {
 
-    // As an experiment I attempted to structure it like the Elm architecture - a single non-global State object, grouped update functions and separate the mutable activity (ajax) into a separate module
-
-    // This uses Knockout.js for basic view binding.
-
     // Constants
     var EmptyMessage = ""
     var CorrectMessage = "You are correct! You get points worth: "
@@ -14,7 +10,7 @@ var Quiz = (function () {
 
     // Navigation
     function nextQuestion(state) {
-
+        
         state.lockAnswer(true)
 
         var question = currentQuestion(state)
@@ -35,7 +31,7 @@ var Quiz = (function () {
             state.showCorrectAnswer(true)
         }
 
-        pauseAndGo(state)
+        pauseAndGoToNextPage(state)
     }
 
     function currentQuestion(state) {
@@ -49,7 +45,7 @@ var Quiz = (function () {
         }, state.messageTime)
     }
 
-    function pauseAndGo(state) {
+    function pauseAndGoToNextPage(state) {
         setTimeout(function () {
             state.message(EmptyMessage)
             state.showCorrectAnswer(false)
@@ -92,11 +88,11 @@ var Quiz = (function () {
                     selected_answer.every(function (answer, index) {
                         return answer.toString() == correct_answer[index].toString()
                     })
-
         }
     }
 
     function correctAnswerWhenIncorrect(state, value) {
+
         var question = currentQuestion(state)
 
         if (!state.showCorrectAnswer()) return false
@@ -129,7 +125,7 @@ var Quiz = (function () {
 
     function total(questions) { 
         return questions.reduce(
-        function (sum, question) {
+            function (sum, question) {
             return sum + question.points
         }, 0)
     }

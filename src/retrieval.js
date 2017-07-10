@@ -1,4 +1,6 @@
-var retrieval = (function () {
+"use strict"
+
+var Retrieval = (function () {
 
     function getQuizData(url, message, validate, load, setUp) {
 

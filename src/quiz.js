@@ -2,15 +2,15 @@
 
 var Quiz = (function () {
 
-    // As an experiment this is based this on the Elm architecture - a single State object with grouped update functions and separation of mutable activity (ajax) into a separate module
+    // As an experiment I attempted to structure it like the Elm architecture - a single non-global State object, grouped update functions and separate the mutable activity (ajax) into a separate module
 
     // This uses Knockout.js for basic view binding.
 
     // Constants
     var EmptyMessage = ""
-    var CorrectMessage = "You are correct! You get points of: "
-    var IncorrectMessage = "Er. No. That isn't right..."
-    var NoAnswerMessage = "Er. No. A selection is needed. You will have to try again"
+    var CorrectMessage = "You are correct! You get points worth: "
+    var IncorrectMessage = "Nah. That isn't right - it was this"
+    var NoAnswerMessage = "Nah. A selection is needed. Please try again"
 
     // Navigation
     function nextQuestion(state) {
@@ -25,7 +25,9 @@ var Quiz = (function () {
         }
 
         if(gotItCorrect(question)) {
-            state.message(CorrectMessage + question.points)
+            state.message(
+                CorrectMessage + Math.round(question.points * 100 / total(state.quiz().questions)) + "%"
+            )
         }
         else
         {
@@ -113,10 +115,6 @@ var Quiz = (function () {
 
     // Scoring
     function calculateScore(questions) {
-        var total = questions.reduce(
-            function (sum, question) {
-                return sum + question.points
-            }, 0)
 
         var score = questions.reduce(
             function (sum, question, index) {
@@ -126,7 +124,14 @@ var Quiz = (function () {
                 return sum + pointsForQuestion
             }, 0)
 
-        return Math.round(score * 100 / total)
+        return Math.round(score * 100 / total(questions))
+    }
+
+    function total(questions) { 
+        return questions.reduce(
+        function (sum, question) {
+            return sum + question.points
+        }, 0)
     }
 
     function finalMessages(resultsMessages, score) {

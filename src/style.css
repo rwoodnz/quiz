@@ -1,3 +1,116 @@
+.titleBlock {
+    margin: 20px 0 20px 0;
+}
+
+.subtitleBlock {
+    margin: 20px 0 20px 0;
+}
+
+.imageBlock {
+    margin: 50px 0 20px 0;
+}
+
+.questionBlock {
+    margin: 20px 0 20px 0;
+}
+
+.answerBlock {
+    margin: 20px 0 20px 0;
+}
+
+.messageBox {
+    margin: 20px 0 20 0;
+    height: 60px;
+}
+
+h1 {
+    margin: auto; 
+    display: block;
+    font: 30px Georgia, Serif; 
+    text-transform: uppercase; 
+    letter-spacing: 3px;
+    width: 90%;
+    text-align: center;
+}
+
+h2 {
+    margin: auto;
+    display: block;
+    font: 20px Georgia, Serif; 
+    color: #666;
+    width: 90%;
+    text-align: center;
+}
+
+h3 {
+    margin: auto;
+    display: block;
+    font: 25px Georgia, Serif; 
+    color: #666;
+    width: 90%;
+    text-align: center;
+}
+
+.answerHeader {
+    margin: auto;
+    display: block;
+    font: 25px Georgia, Serif; 
+    color: #666;
+    width: 90%;
+    text-align: center;
+}
+
+.answerBox {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.answerSelections {
+    margin: 10px;
+    padding: 15px;
+    background-color: #DDD;
+    font: 20px Georgia, Serif; 
+    color: #666;
+    border-radius: 10px;
+}
+
+img {
+    border-radius: 20px;
+    padding: 5px;
+    width: 550px;
+    margin: auto;
+    display: block;
+}
+
 .highlight {
-    background-color: green
+    background-color: orange
+}
+
+input[type=radio], input[type=checkbox] {
+    border: 0px;
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    margin: auto;
+    display: block;
+    background-color: green;
+    font: 15px Georgia, Serif; 
+    text-transform: uppercase; 
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.message {
+    margin: auto;
+    display: block;
+    background-color: orange;
+    font: 20px Georgia, Serif; 
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
+    width: 60%;
+    text-align: center;
 }

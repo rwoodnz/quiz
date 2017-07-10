@@ -14,48 +14,81 @@
 </head>
 
 <body>
+    <div class="titleBlock">
+        <h1 data-bind="text: quiz().title"></h1>
+    </div>
 
-    <h1 data-bind="text: quiz().title"></h1>
-    <h3 data-bind="text: quiz().description"></h3>
+    <div class="subtitleBlock">
+        <h2 data-bind="text: quiz().description"></h2>
+    </div>
 
     <div class="question" data-bind="visible: !complete()">
 
-        <img data-bind="attr: { src: currentQuestion($root).img }">
-        </img>
+        <div class="imageBlock">
+            <img data-bind="attr: { src: currentQuestion($root).img }">
+            </img>
+        </div>
+        
+        <div class="questionBlock">
+            <h3 data-bind="text: currentQuestion($root).title"></h2>
+        </div>
 
-        <h2 data-bind="text: currentQuestion($root).title"></h2>
+        <div class="messageBox">
+            <div class="message" data-bind="text: message, visible: message">
+            </div>
+        </div>
 
         <div class="mutiplechoice-single" data-bind="visible: currentQuestion($root).question_type === 'mutiplechoice-single'"> 
-            Choose one:
-            <div data-bind="foreach: currentQuestion($root).possible_answers">
-                <div data-bind="css: { highlight: $root.correctAnswerWhenIncorrect($root, a_id) }">
-                    <input type="radio" name="possible_answers" data-bind=" attr: { value: a_id }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer" />
-                    <span data-bind="text: caption"></span>
+            <div class="answerHeader">Choose one:</div>
+            <div class="answerBlock" data-bind="foreach: currentQuestion($root).possible_answers">
+                <div class="answerBox">
+                    <label>
+                        <div class="answerSelections" data-bind="css: { highlight: $root.correctAnswerWhenIncorrect($root, a_id) }">
+                            <input type="radio" name="possible_answers" data-bind=" attr: { value: a_id }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer" />
+                            <span data-bind="text: caption"></span>
+                        </div>
+                    </label>
                 </div>
             </div>
         </div>
         
         <div class="mutiplechoice-multiple" data-bind="visible: currentQuestion($root).question_type === 'mutiplechoice-multiple'">
-            Choose one or more:
-            <div data-bind="foreach: currentQuestion($root).possible_answers">
-                <div data-bind="css: { highlight: $root.correctAnswerWhenIncorrect($root, a_id) }">
-                    <input type="checkbox" name="possible_answers" data-bind=" attr: { value: a_id }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer" />
-                <span data-bind="text: caption"></span>
+            <div class="answerHeader">Choose one or more:</div>
+            <div class="answerBlock" data-bind="foreach: currentQuestion($root).possible_answers">
+                <div class="answerBox">
+                    <label>
+                        <div class="answerSelections" data-bind="css: { highlight: $root.correctAnswerWhenIncorrect($root, a_id) }">
+                            <input type="checkbox" name="possible_answers" data-bind=" attr: { value: a_id }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer" />
+                            <span data-bind="text: caption"></span>
+                        </div>
+                    </label>
                 </div>
             </div>
         </div>
 
         <div class="truefalse" data-bind="visible: currentQuestion($root).question_type === 'truefalse'">
-            Choose true or false:
-            <div data-bind="css: { highlight: correctAnswerWhenIncorrect($root, true) }">
-                <input type="radio" name="truefalse" data-bind=" attr: { value: true }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer"
-                />
-                <span data-bind="text: true"></span>
+            <div class="answerHeader">Choose true or false:</div>
+            <div class="answerBlock">
+                <div class="answerBox">
+                    <label>
+                        <div class="answerSelections" data-bind="css: { highlight: correctAnswerWhenIncorrect($root, true) }">
+                            <input type="radio" name="truefalse" data-bind=" attr: { value: true }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer"
+                            />
+                            <span data-bind="text: true"></span>
+                        </div>
+                    </label>
+                </div>
             </div>
-            <div data-bind="css: { highlight: correctAnswerWhenIncorrect($root, false) }">
-                <input type="radio" name="truefalse" data-bind=" attr: { value: false }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer"
-                />
-                <span data-bind="text: false"></span>
+            <div class="answerBlock">
+                <div class="answerBox">
+                    <label>
+                        <div class="answerSelections" data-bind="css: { highlight: correctAnswerWhenIncorrect($root, false) }">
+                            <input type="radio" name="truefalse" data-bind=" attr: { value: false }, checked: $root.currentQuestion($root).selected_answer, disable: $root.lockAnswer"
+                            />
+                            <span data-bind="text: false"></span>
+                        </div>
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -74,11 +107,8 @@
 
     </div>
 
-    <div data-bind="text: message, visible: message">
-    </div>
-
     <button data-bind="click: nextQuestion, visible: !complete(), disable: $root.lockAnswer">
-        Next
+        Next question
     </button>
 
 </body>

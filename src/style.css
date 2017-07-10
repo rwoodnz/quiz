@@ -1,26 +1,35 @@
-.titleBlock {
+.title-block {
     margin: 20px 0 20px 0;
 }
 
-.subtitleBlock {
-    margin: 20px 0 20px 0;
+.subtitle-block {
+    margin: 15px 0 15px 0;
 }
 
-.imageBlock {
-    margin: 50px 0 20px 0;
+.image-block {
+    margin: 25px 0 10px 0;
 }
 
-.questionBlock {
-    margin: 20px 0 20px 0;
+.question-block {
+    margin: 15px 0 15px 0;
 }
 
-.answerBlock {
-    margin: 20px 0 20px 0;
+.answer-block {
+    margin: 15px 0 20px 0;
 }
 
-.messageBox {
-    margin: 20px 0 20 0;
-    height: 60px;
+.message-box {
+    margin: 10px 0 10px 0;
+    height: 40px;
+}
+
+.answer-box {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.final-image {
+    padding: 20px;
 }
 
 h1 {
@@ -49,9 +58,10 @@ h3 {
     color: #666;
     width: 90%;
     text-align: center;
+    line-height: 130%;
 }
 
-.answerHeader {
+.answer-header {
     margin: auto;
     display: block;
     font: 25px Georgia, Serif; 
@@ -60,12 +70,7 @@ h3 {
     text-align: center;
 }
 
-.answerBox {
-    margin: 0 auto;
-    width: 500px;
-}
-
-.answerSelections {
+.answer-selections {
     margin: 10px;
     padding: 15px;
     background-color: #DDD;

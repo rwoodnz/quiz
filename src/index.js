@@ -4,7 +4,9 @@
 
 // This uses Knockout.js for basic view binding. Jasmine for unit tests (open SpecRunner.html).
 
-// Things thought of, but decided would be overkill - validate json schema, more thorough unit tests. 
+// Things thought of, but decided would be overkill - validate json schema, more thorough unit tests.
+
+// Things I added that were not specified but seemed needed or expected - must answer each question, disable questions and button when waiting the 3 seconds, let the user know what percentage points they got for a correct answer, dislay the supplied image on the final result screen.
 
 var Main = (function () {
 
